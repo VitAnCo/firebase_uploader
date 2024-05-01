@@ -30,11 +30,16 @@ class MainController:
     def upload_file(self):
         self.view.upload_button['state'] = "disable"
         if (self.filename != "None"):
+            self.view.progress_bar.config(mode="indeterminate")
+            self.view.progress_bar.start(10)
             self.model.file_to_firebase(self.filename, self.view.nodeid.get())
+            self.view.progress_bar.stop()
+            self.view.upload_button['state'] = "normal"
+            self.view.progress_bar.config(mode="determinate")
             messagebox.showinfo("Success", f"Upload {self.filename} success !")
         else:
             messagebox.showerror("Error", "Please choose file to upload !")
-        self.view.upload_button['state'] = "normal"
+        
 
     def dir_handler(self):
         if self.view.file_link.get() == "None":

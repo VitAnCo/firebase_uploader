@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import *
+from tkinter import ttk
 
 
 class MainView(tk.Tk):
@@ -17,11 +18,11 @@ class MainView(tk.Tk):
 
         # Title
         self.frame_title = Label(self.main_frame, text="FIRMWARE UPLOADER" , fg = "crimson",padx=10, pady=10, font=('Mona Sans Bold', 25), bg = 'aliceblue')
-        self.frame_title.pack(side=TOP,padx=10, pady=10)
+        self.frame_title.pack(side=TOP,padx=10, pady=15)
 
         # Select file frame
         self.choose_file_frame = Frame(self.main_frame, bg = 'aliceblue')
-        self.choose_file_frame.pack(side=TOP, expand=1, fill=X)
+        self.choose_file_frame.pack(side=TOP, expand=1, fill=X, pady=10)
 
         # Upload file label
         self.test_file_label = Label(self.choose_file_frame, text="Upload file: ", fg = "blue", font=('Mona Sans Bold', 15), padx= 10, bg = 'aliceblue')
@@ -37,7 +38,7 @@ class MainView(tk.Tk):
         
         # Node ID frame
         self.nodeid_frame = Frame(self.main_frame, bg = 'aliceblue')
-        self.nodeid_frame.pack(expand=1, fill=X, anchor=N)
+        self.nodeid_frame.pack(expand=1, fill=X, anchor=N, pady=10)
 
         # Node ID label
         self.nodeid_label = Label(self.nodeid_frame, text="Node ID: ", fg = "blue", font=('Mona Sans Bold', 15), padx= 10, bg = 'aliceblue')
@@ -50,10 +51,12 @@ class MainView(tk.Tk):
 
         # Button frame
         self.button_frame = tk.Frame(self, bg = 'aliceblue')
-        self.button_frame.pack()
-        
+        self.button_frame.pack(expand=1, fill=X, anchor=S)
         # Upload button
         self.upload_button = Button(self.button_frame, text = "Upload file", width=10, height=2)
-        self.upload_button.pack(side=LEFT, padx=5, pady=5)
+        self.upload_button.pack(side=TOP, padx=5, pady=5)
+        
+        self.progress_bar = ttk.Progressbar(self.button_frame)
+        self.progress_bar.pack(expand=1, fill=X, side=TOP)
 
         
