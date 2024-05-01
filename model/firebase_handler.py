@@ -53,4 +53,4 @@ class FirebaseHandler:
                  "NewUpdate": 0,
                  "Node_ID": self.node_id,
                  "url": self.firebase_storageURL
-                 })
+                 }) 

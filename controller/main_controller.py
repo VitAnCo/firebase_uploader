@@ -2,19 +2,21 @@ from view.main_view import MainView
 from view.add_file_view import AddFileView
 from model.firebase_handler import FirebaseHandler
 from tkinter import messagebox
+import threading
 
 
 class MainController:
     def __init__(self) -> None:
-        self.view = MainView()
+        self.view = MainView() 
         self.model = FirebaseHandler()
         self.bind()
         self.filename = "None"
+        self.t1 = threading.Thread(target=self.dir_handler)
 
     def bind(self):
         self.view.addfile_button.bind("<ButtonRelease-1>", lambda e:self.add_file())
-        self.view.upload_button.bind("<ButtonRelease-1>", lambda e:self.upload_file())
-        self.view.test_file_dir.bind("<Button-1>", lambda e:self.dir_handler())
+        self.view.upload_button.bind("<ButtonRelease-1>", lambda e:threading.Thread(target=self.upload_file).start())
+        self.view.test_file_dir.bind("<Button-1>", lambda e:self.t1.start())
 
 
     def add_file(self):
