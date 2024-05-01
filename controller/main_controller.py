@@ -20,7 +20,6 @@ class MainController:
 
     def add_file(self):
         self.file_view = AddFileView()
-        
         self.filename=self.file_view.get_file_name()
         if self.filename == "":
             self.filename = "None"

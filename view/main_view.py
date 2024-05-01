@@ -8,6 +8,7 @@ class MainView(tk.Tk):
         self.geometry('600x300')
         self.title("FIRMWARE UPLOADER")
         self.minsize(600, 300)
+        self.configure(background='aliceblue')
 
         self.main_frame = tk.Frame(self, bg = 'aliceblue')
         self.main_frame.pack(expand=1, fill=BOTH, side=TOP, anchor=N)
