@@ -15,7 +15,7 @@ class MainController:
     def bind(self):
         self.view.addfile_button.bind("<ButtonRelease-1>", lambda e:self.add_file())
         self.view.upload_button.bind("<ButtonRelease-1>", lambda e:threading.Thread(target=self.upload_file).start())
-        self.view.test_file_dir.bind("<Button-1>", lambda e:self.t1.start())
+        self.view.test_file_dir.bind("<Button-1>", lambda e:self.dir_handler())
 
 
     def add_file(self):
