@@ -29,7 +29,7 @@ class MainView(tk.Tk):
         self.test_file_label.pack(side=LEFT)
 
         # File path label
-        self.test_file_dir = Entry(self.choose_file_frame, textvariable=self.file_link)
+        self.test_file_dir = Entry(self.choose_file_frame, textvariable=self.file_link,state='readonly')
         self.test_file_dir.pack(side=LEFT, expand=1, fill=X)
         
         # Add file path button
