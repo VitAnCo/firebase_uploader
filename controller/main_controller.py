@@ -11,7 +11,6 @@ class MainController:
         self.model = FirebaseHandler()
         self.bind()
         self.filename = "None"
-        self.t1 = threading.Thread(target=self.dir_handler)
 
     def bind(self):
         self.view.addfile_button.bind("<ButtonRelease-1>", lambda e:self.add_file())
@@ -21,6 +20,7 @@ class MainController:
 
     def add_file(self):
         self.file_view = AddFileView()
+        
         self.filename=self.file_view.get_file_name()
         if self.filename == "":
             self.filename = "None"
@@ -29,11 +29,13 @@ class MainController:
         pass
 
     def upload_file(self):
+        self.view.upload_button['state'] = "disable"
         if (self.filename != "None"):
             self.model.file_to_firebase(self.filename, self.view.nodeid.get())
             messagebox.showinfo("Success", f"Upload {self.filename} success !")
         else:
             messagebox.showerror("Error", "Please choose file to upload !")
+        self.view.upload_button['state'] = "normal"
 
     def dir_handler(self):
         if self.view.file_link.get() == "None":
