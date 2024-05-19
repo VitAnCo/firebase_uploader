@@ -7,7 +7,7 @@ class FirebaseHandler:
     storageBucket = 'fota-28ca6.appspot.com'
     databaseURL = 'https://fota-28ca6-default-rtdb.firebaseio.com/'
     def __init__(self) -> None:
-        cred = credentials.Certificate("../firebase/resources/fota-28ca6-firebase-adminsdk-bg7vk-cfec2bcaec.json")
+        cred = credentials.Certificate("../firebase_uploader/resources/fota-28ca6-firebase-adminsdk-bg7vk-cfec2bcaec.json")
         firebase_admin.initialize_app(cred, {'storageBucket': self.storageBucket, 'databaseURL':self.databaseURL})
     
     def file_to_firebase(self, file_path, node_id):
